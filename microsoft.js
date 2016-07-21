@@ -48,13 +48,13 @@ function msMenu() {
         if (target.parentNode.className == 'shell-header-dropdown-label') {
             if (target == oldTarget) {
                 target.parentNode.nextSibling.style.display = target.parentNode.nextSibling.style.display ? '' : 'block';
-
+		flagDown()
             } else {
                 if (isDropown(target)) {
                     if (oldTarget)
                         oldTarget.parentNode.nextSibling.style.display = '';
                     target.parentNode.nextSibling.style.display = target.parentNode.nextSibling.style.display ? '' : 'block';
-
+		    flagDown()
                     oldTarget = target;
                 }
             }
