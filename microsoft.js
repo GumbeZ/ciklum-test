@@ -1,4 +1,4 @@
-﻿function msMenu() {
+function msMenu() {
     var tree = document.getElementById('srv_shellHeaderNav')
     var target = false;
     var oldTarget = false;
@@ -9,7 +9,7 @@
     if ($(this).width() < 899)
         var resMob = true;
     else var resMob = false;
-    
+
     function mobOpenClose() {
         if (menu.className.indexOf(' opened') > -1) {
             menu.className = menu.className.substring(0, menu.className.indexOf(" "));
@@ -28,10 +28,6 @@
                 flag.parentNode.nextSibling.style.display = '';
             }
             flag.parentNode.parentNode.parentNode.style.height = '';
-
-
-
-
         }
     }
 
@@ -52,13 +48,13 @@
         if (target.parentNode.className == 'shell-header-dropdown-label') {
             if (target == oldTarget) {
                 target.parentNode.nextSibling.style.display = target.parentNode.nextSibling.style.display ? '' : 'block';
-                flagDown()
+
             } else {
                 if (isDropown(target)) {
                     if (oldTarget)
                         oldTarget.parentNode.nextSibling.style.display = '';
                     target.parentNode.nextSibling.style.display = target.parentNode.nextSibling.style.display ? '' : 'block';
-                    flagDown()
+
                     oldTarget = target;
                 }
             }
@@ -80,8 +76,7 @@
         if (target.className == 'shell-header-toggle-menu' || target.className == 'shell-icon-menu') {
             mobOpenClose();
         }
-
-
+		
         if (target.parentNode.parentNode.className == 'shell-header-dropdown-tab') {
             if (flag) {
                 if (flag == target) {
@@ -97,21 +92,16 @@
             }
 
         }
-
-
-
-
     }
+	
     tree.onmouseover = function(evt) {
 
         var evt = evt || event;
         var target = evt.target || evt.srcElement;
         if (menu.className.indexOf(' opened') == -1)
             if (target.parentNode.parentNode.className == 'shell-header-dropdown-tab') {
+                flagDown()
                 target.parentNode.parentNode.className = 'shell-header-dropdown-tab active';
-                if (target.parentNode.nextSibling)
-                    target.parentNode.nextSibling.style.height = '';
-                target.parentNode.parentNode.parentNode.style.height = '';
                 if (target.parentNode.nextSibling) {
                     target.parentNode.nextSibling.style.height = Math.max(target.parentNode.parentNode.parentNode.offsetHeight, target.parentNode.nextSibling.offsetHeight) + 'px';
                     target.parentNode.parentNode.parentNode.style.height = Math.max(target.parentNode.parentNode.parentNode.offsetHeight, target.parentNode.nextSibling.offsetHeight) + 'px';
@@ -119,11 +109,13 @@
                 if (flag) {
                     flag.parentNode.parentNode.className = 'shell-header-dropdown-tab';
                 }
+
                 flag = target;
 
             }
 
     }
+	
     $(window).resize(function() {
         if (resMob == true) {
             if ($(this).width() >= 899) {
